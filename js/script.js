@@ -129,6 +129,7 @@ function renderPagination(totalItems) {
     btn.addEventListener('click', () => {
       currentPage = i;
       updateCatalog();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     pagination.appendChild(btn);
   }
