@@ -1,4 +1,6 @@
-const productos = [
+
+  
+  const productos = [
   { nombre: "Spiderman Figura Toy Biz Hombre Araña Super Poseable 2003", precio: 1.999, categoria: "figuras", imagen: "img/articulos/spidermanToyBiz2003.webp", enlace: "http://bit.ly/3Iy7fy0" },
   { nombre: "Battle Goliath Gargoyles Kenner 1995 Gargolas - Incompleto", precio: 229, categoria: "figuras", imagen: "img/articulos/goliathGargoyles.webp", enlace: "http://bit.ly/4kMjiWd" },
   { nombre: "Neonlicious Lol Surprise Omg Serie 1 Millennial Girls 2021", precio: 499, categoria: "muñecas", imagen: "img/articulos/neonliciusLol.webp", enlace: "http://bit.ly/3Tuvm2Z" },
@@ -37,6 +39,7 @@ const productos = [
   { nombre: "Figura Kraang Droide Playmates Viacom 2012 Tortugas Ninja", precio: 649, categoria: "figuras", imagen: "img/articulos/kraang2012.webp", enlace: "http://bit.ly/4kwK6JI" },
   { nombre: "Figura Knabstrupper Caballo Schleich Germany Vintage Loose", precio: 299, categoria: "animales", imagen: "img/articulos/knsbdtrupper.webp", enlace: "https://bit.ly/3GpLakL" },
   { nombre: "Set Polly Pocket Princesa Libro Vintage 1995", precio: 999, categoria: "vintage", imagen: "img/articulos/pollyPocketLibro.webp", enlace: "http://bit.ly/4nEEekq" },
+
 ];
 
 const ITEMS_PER_PAGE = 10;
@@ -129,7 +132,7 @@ function renderPagination(totalItems) {
     btn.addEventListener('click', () => {
       currentPage = i;
       updateCatalog();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollToTop(); // ✅ NUEVO: hace scroll al inicio en móvil/PC
     });
     pagination.appendChild(btn);
   }
@@ -221,3 +224,10 @@ window.addEventListener('DOMContentLoaded', () => {
   setDarkMode(modoOscuroGuardado);
   updateCatalog();
 });
+
+
+// ✅ NUEVO: Scroll al principio compatible con móviles y navegadores modernos
+function scrollToTop() {
+  const scrollEl = document.scrollingElement || document.documentElement || document.body;
+  scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
+}
